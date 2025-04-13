@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- fieldset是表單的分隔線 -->
+    <fieldset>
+        <!-- method是表單的傳送方式,填寫才可以傳送資訊 -->
+        <!-- get是內不得裝信件的寄送方式，如同是明信片一樣,post是信封內有裝信件的寄送方式（信封有內容物） -->
+    <form action=".4_test.html" method="get">
+        <table style="margin: auto;" text-align="center">
+        <h2 style="text-align: center;">登入帳號密碼</h2>
+        <tbody><tr>
+            <td>帳號</td>
+            <td><input type="text" name="username" placeholder="請輸入帳號" required></td>
+        </tr>
+        <tr>
+            <td>密碼</td>
+            <!-- password不會顯示,但是可以輸入,name可以自己命名,是為了後續的檢查,會送出給下一個人知道這個代號 -->
+            <!-- placeholder是在沒有言寫東西的時候可以給提示 -->
+            <!-- required是必填,如過是要驗證是否有大小寫,是用javascript來驗證 -->
+            <td><input type="password" name="password" placeholder="請輸入密碼" required></td>
+        </tr>
+        <tr>
+            <td>性別</td>
+            <td><input id="man" type="radio" name="gender" value="man"><label for="man">男</label>
+            <input id="woman" type="radio" name="gender" value="woman"><label for="woman">女</label>
+            <input type="radio" name="gender" value="unknown">不提供</td>
+        </tr>
+        <tr>
+            <td>興趣</td>
+            <td><input type="checkbox" name="readbook">看書
+                <input type="checkbox" name="readbook">玩遊戲
+                <input type="checkbox" name="readbook">運動
+                <input type="checkbox" name="readbook">睡覺
+                <input type="checkbox" name="readbook">露營
+            </td>
+        </tr>
+        <tr>
+            <td>從何得知</td>
+            <td>
+                <select name="from" aria-placeholder="請選擇">
+                    <option value="">請選擇</option>
+                    <option value="google">google</option>
+                    <option value="facebook">facebook</option>
+                    <option value="instagram">instagram</option>
+                    <option value="youtube">youtube</option>
+                    <option value="其他">其他</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>上傳檔案</td>
+            <td>
+                <input type="file" name="file">
+        </td> 
+        </tr>
+        <tr>
+            <td>備註</td>
+            <!-- textarea是多行輸入,cols是列數,rows是行數 -->
+            <td><textarea name="memo" cols="20" rows="5"></textarea></td>
+        </tr>
+        <tr>
+            <!-- value是按鈕的文字,也為此東西的命名 -->
+            <td><input type="submit" value="登入"></td>
+            <td><input type="reset" value="重新填寫"></td>
+        </tr>
+        </tbody>
+    </table>
+    </form>
+    </fieldset>
+</body>
+</html>

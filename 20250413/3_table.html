@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格</title>
+</head>
+<body>
+    <table border="1" width="100%" cellspacing="0" cellpadding="50">
+        <!-- 表格包含thead(tr-th) tbody(tr-td) tfoot(tr-td) -->
+        <!-- thead為表格標題 -->
+            <thead>
+        <!-- th為表格標題 -->
+        <!-- td為表格內容 -->
+                <tr>
+                    <th>名字</th>
+                    <th>英文</th>
+                    <th>數學</th>
+                    <th>國文</th>
+                    <th>體育</th>
+                </tr>
+            </thead>
+        <!-- tbody為表格內容 -->
+        <tbody>
+        <tr>
+        <!-- tr為表格列 -->
+        <!-- td為表格內容 -->
+            <td rowspan="2">A1</td>
+            <td>A2</td>
+            <td colspan="2" rowspan="2">A3</td>
+            <!-- <td>A3</td> -->
+            <td>A3</td>
+        </tr>
+        <tr>
+            <!-- <td>B1</td> -->
+            <td>B2</td>
+            <!-- <td>B3</td> -->
+            <!-- <td>B3</td> -->
+            <td>B3</td>
+        </tr>
+    </tbody>
+    <!-- tfoot為表格底部 -->
+    <tfoot>
+        <tr>
+        <td colspan="5">合計</td>
+        </tr>
+    </tfoot>
+    </table>
+</body>
+</html>
