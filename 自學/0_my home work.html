@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AI 心靈導師聊天室</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Helvetica Neue", sans-serif;
+        }
+
+        body {
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 400px;
+            height: 90vh;
+            background-color: #fff;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background-color: #4A90E2;
+            color: white;
+            padding: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin: 8px 0;
+            max-width: 70%;
+            padding: 10px 14px;
+            border-radius: 16px;
+            line-height: 1.4;
+            font-size: 14px;
+        }
+
+        .user {
+            background-color: #DCF8C6;
+            align-self: flex-end;
+            text-align: right;
+        }
+
+        .ai {
+            background-color: #eee;
+            align-self: flex-start;
+            text-align: left;
+        }
+
+        .chat-input {
+            display: flex;
+            border-top: 1px solid #ddd;
+            padding: 10px;
+            background-color: #fafafa;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            outline: none;
+            margin-right: 10px;
+        }
+
+        .chat-input button {
+            padding: 8px 16px;
+            background-color: #4A90E2;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        /* 手機版優化 */
+        @media (max-width: 500px) {
+            .chat-container {
+                height: 100vh;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="chat-container">
+        <div class="chat-header">💬 AI 心靈導師聊天室</div>
+
+        <div class="chat-messages">
+            <div class="message user">你：我最近有點焦慮...</div>
+            <div class="message ai">AI：沒事，有我在。你願意和我聊聊原因嗎？🙂</div>
+            <div class="message user">你：壓力好大，我覺得喘不過氣</div>
+            <div class="message ai">AI：深呼吸，從現在起，我陪著你慢慢放鬆。</div>
+        </div>
+
+        <div class="chat-input">
+            <input type="text" placeholder="你可以輸入..." />
+            <button>送出</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
