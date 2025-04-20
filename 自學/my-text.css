@@ -1,0 +1,142 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", sans-serif;
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 450px;
+    height: 90vh;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.chat-header {
+    background-color: rgb(48, 198, 224);
+    color: #fff;
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.textspan {
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #cfcfcf;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.messages {
+    margin: 8px 0;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.4;
+    max-width: 70%;
+}
+
+.user {
+    display: flex;
+    align-self: flex-end;
+    background-color: #8fe69d;
+    position: relative;
+    padding-right: 40px;
+    margin-right: 40px;
+}
+
+.user > div {
+    order: 1;
+}
+
+.user-info {
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info span {
+    margin-top: 5px;
+    font-weight: 12px;
+}
+
+.ai {
+    background-color: #d8d8d8;
+    text-align: left;
+    align-self: flex-start;
+}
+
+.chat-input {
+    display: flex;
+    border-top: 1px solid #ddd;
+    padding: 10px;
+    background-color: #fafafa;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    margin-right: 20px;
+}
+
+.chat-input button {
+    padding: 8px 16px;
+    background-color: #4A90E2;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* 手機版優化 */
+@media (max-width: 500px) {
+    .chat-container {
+        height: 100vh;
+        border-radius: 0;
+    }
+}
