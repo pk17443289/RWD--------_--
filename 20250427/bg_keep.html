@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .bg {
+            width: 600px;
+            height: 600px;
+            background:
+                url("./img.jpg") no-repeat right bottom;
+            background-size: 300px 300px;
+        }
+
+        .css_bg {
+            width: 600px;
+            height: 600px;
+            background: #2A7B9B;
+            background: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+        }
+
+        /* transparent是透明的意思,這樣可以跟其他顏色做搭配 */
+        /* linear-gradient(90deg, #2A7B9B, transparent);是從#2A7B9B到透明,linear-gradient的是線性的意思 */
+        
+        .css_bg1 {
+            width: 600px;
+            height: 600px;
+            background: #bd4990;
+            background-image: linear-gradient(90deg, #2A7B9B, transparent);
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="bg"></div>
+    <div class="css_bg"></div>
+    <div class="css_bg1"></div>
+</body>
+
+</html>

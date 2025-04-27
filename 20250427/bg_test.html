@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        text-align: center;
+    }
+
+    table {
+        margin: 1rem;
+        display: inline-block;
+    }
+
+    table,
+    tr,
+    td {
+        border: 1px solid #000;
+    }
+
+/* DISPLAY的INLINE-BLOCK是指讓畫面在同一行,但已經不使用這個方式了,每個框架會多4px */
+
+table td {
+        width: 200px;
+        height: 200px;
+
+        &.a {
+            background: rgb(196, 10, 50);
+        }
+
+        &.b {
+            background-image: url("./img.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+        &.c {
+            background: url("./img.jpg") repeat-x;
+            background-size: 40px 40px;
+        }
+
+        &.d {
+            background: url("./img.jpg") repeat-y;
+            background-size: 40px 40px;
+        }
+
+        &.e {
+            background: url("./img.jpg") no-repeat center;
+            background-size: 40px 40px;
+        }
+
+        &.f {
+            background: url("./img.jpg") no-repeat center #f5f3a0;
+            background-size: 40px 40px;
+        }
+
+        &.g {
+            background:
+                url("./img.jpg") no-repeat top center,
+                url("./img.jpg") no-repeat bottom center,
+                url("./img.jpg") no-repeat center center;
+            background-size: 100% 33.3%;
+        }
+
+        &.h {
+            background: #000000;
+            background-image: linear-gradient(to left, #3409f7, transparent);
+        }
+
+        &.i {
+            background-image: radial-gradient(#000000, transparent);
+        }
+    }
+    /* 父狀巢狀可以把子巢狀包起來 */
+</style>
+
+<body>
+    <table>
+        <tr>
+            <td class="a"></td>
+            <td class="b"></td>
+            <td class="c"></td>
+        </tr>
+        <tr>
+            <td class="d"></td>
+            <td class="e"></td>
+            <td class="f"></td>
+        </tr>
+        <tr>
+            <td class="g"></td>
+            <td class="h"></td>
+            <td class="i"></td>
+        </tr>
+    </table>
+</body>
+
+</html>
