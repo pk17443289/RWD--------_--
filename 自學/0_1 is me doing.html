@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <link rel="stylesheet" href="my-text.css">
+    <div class="chat-container">
+        <div class="chat-header">
+            <p>❌</p>
+            <p>💬 AI 心靈導師聊天室</p>
+
+        </div>
+
+        <div class="textspan">
+            <p>這是一個 AI 心靈導師聊天室，請輸入你的問題，我將提供有用的建議。</p>
+        </div>
+        <div class="chat-messages">
+
+            <div class="messages user">
+                <div>
+                    <p>我最近有點焦慮...</p>
+                </div>
+                <div class="user-info">
+                    <img src="./me.jpg" class="avatar" alt="你">
+                    <span>你</span>
+                </div>
+            </div>
+            <div class="messages ai">沒事，有我在。你願意和我聊聊原因嗎？🙂</div>
+            <div class="messages user">
+                <div>
+                    <p>壓力好大，我覺得喘不過氣</p>
+                </div>
+                <div class="user-info">
+                    <img src="./me.jpg" class="avatar" alt="你">
+                    <span>你</span>
+                </div>
+            </div>
+            <div class="messages ai">深呼吸，從現在起，我陪著你慢慢放鬆。</div>
+        </div>
+
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="你可以輸入..." />
+            <button id="send-button">送出</button>
+        </div>
+    </div>
+
+    <script src="myText.js"></script>
+
+</body>
+
+</html>
+<!-- chat-container -->
