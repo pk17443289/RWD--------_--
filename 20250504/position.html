@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+    
+
+<head>
+    <meta name="google" content="notranslate">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 50px;
+            padding: 50px;
+            background: #ccc;
+            border: 1px solid #ff0;
+
+            /* flexbox 效果，使內容居中心 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 204px);
+            /*  height是高度 calc是計算 100vh是視窗高度-204px是總高度 */
+        }
+
+        .main {
+            padding: 100px;
+            background: #aaa;
+            border: 1px solid #f00;
+            position: relative;
+        }
+
+        .bigbox {
+            width: 300px;
+            border: 1px solid #000;
+            background: rgb(209, 248, 248);
+            display: flex;
+            /* display:flex是內容自動換行 */
+            flex-wrap: wrap;
+            /* flex-wrap是內容自動換行 */
+        }
+
+        .box {
+            font: 1em sans-serif;
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            color: white;
+            background-color: darkcyan;
+            text-align: center;
+            line-height: 50px;
+            display: inline-block;
+        }
+
+        .relative {
+            background-color: red;
+            position: relative;
+            /* position是定位,相對定位,抓的是這個空間(包在.bigbox裡面)的大小來定位,不是抓自己的上下左右(如果用%數表示的話) */
+            top: 20px;
+            left: 20px;
+        }
+
+        .absolute {
+            background-color: red;
+            position: absolute;
+            /* absolute是絕對定位,需要給他絕對值,抓的是視窗的畫面來定位,一開始的位置會在左上角(如果沒有position抓住他的話會一直往外邊飛) */
+            top: 20px;
+            left: 20px;
+            z-index: 1;
+            /* z-index是層次(圖層) */
+        }
+
+        .fixed {
+            background-color: red;
+            position: fixed;
+            /* fixed是固定定位 */
+            top: 0px;
+            left: 0px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="bigbox">
+            <div class="box">01</div>
+            <div class="box">02</div>
+            <div class="box">03</div>
+            <div class="box">04</div>
+            <div class="box">05</div>
+            <div class="box">06</div>
+            <div class="box relative">07</div>
+            <div class="box">08</div>
+            <div class="box">09</div>
+            <div class="box absolute">10</div>
+            <div class="box">11</div>
+            <div class="box">12</div>
+            <div class="box">13</div>
+            <div class="box">14</div>
+            <div class="box">15</div>
+            <div class="box">16</div>
+            <div class="box fixed">17</div>
+            <div class="box">18</div>
+            <div class="box">19</div>
+            <div class="box">20</div>
+        </div>
+    </div>
+</body>
+
+</html>

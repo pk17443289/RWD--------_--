@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .box {
+            width: 500px;
+            height: 500px;
+            background: #11262e;
+            border-color: #2A7B9B;
+            border-style: dashed;
+            border-width: 15px;
+        }
+        .abox {
+            width: 500px;
+            height: 500px;
+            background: #11262e;
+            border: 15px dashed #2A7B9B;
+            border-radius: 30px;
+            /* border-radius是圓角 */
+        }
+
+        p {
+            height: 30px;
+            /* height是高度 */
+            background: #11262e;
+            color: #fff;
+
+            &.demo1 {
+            width: 100px;
+            /* width是寬度 */
+            margin-left: 100px;
+            /* margin-left是左邊距離 */
+            margin-right: 100px;
+
+        }
+            &.demo2 {
+            border: 15px solid #2A7B9B;
+            border-radius: 30px;
+
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">A</div>
+    <div class="abox">L</div>
+        <div>
+            <p class="demo1"> 1:300</p>
+            <p class="demo2">r:100+200</p>
+            <p class="demo3"></p>
+            <p class="demo4"></p>
+            <p class="demo5"></p>
+        </div>
+</body>
+</html>

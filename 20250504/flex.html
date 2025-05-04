@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .flex-container {
+            height: 500px;
+            display: flex;
+            background-color: #f1f1f1;
+            flex-direction: row;
+            /* flex-direction是主軸方向從哪裡開始 */
+            flex-wrap: wrap;
+            /* flex-wrap是內容自動換行 */
+            justify-content: center;
+            /* justify-content是主軸對齊方向 */
+            align-content: center;
+            /* align-content是交叉軸對齊方向 */
+            align-items: center;
+        }
+
+        .flex-item {
+            background-color: #724242;
+        width: 100px;
+        height: 100px;
+        border: 1px solid #f1f1f1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: aliceblue;
+        /* flex個別空間參數(切版可以使用) */
+        /* flex-grow: 0(膨脹係數); flex-shrink: 1(收縮係數); flex-basis: 200px(基本空間); */
+        flex: 0 1 auto;
+        /* 這是預設值(三屬性) */
+        }
+
+        .a {
+            order: 3;
+        }
+
+        .b {
+            flex-grow:3;
+        }
+        
+        .c {
+            flex-grow: 1;
+        }
+
+        /* order是順序,可以用來打亂重新排列 */
+
+    </style>
+</head>
+<body>
+    <div class="flex-container">
+    <div class="flex-item a">a</div>
+    <div class="flex-item b">b</div>
+    <div class="flex-item c">c</div>
+    <div class="flex-item d">d</div>
+    <div class="flex-item e">e</div>
+</div>
+</body>
+</html>
