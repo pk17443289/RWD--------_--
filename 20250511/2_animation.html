@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .base {
+            width: 100px;
+            height: 100px;
+            margin: 0;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #4d194d;
+            position: relative;
+            animation: demo1 1s linear infinite alternate;
+        }
+
+        .button {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            background-color: #35be57;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+
+            &::before {
+                content: "";
+                background: #ffffff;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background:linear-gradient(45deg,transparent 40%s, #ffffff 50%, transparent 75%);
+                opacity: 0.3;
+
+                animation: demo2 1s linear infinite;
+
+            }
+        }
+
+        /* linear是線性(速度曲線) */
+        /* infinite是無限重複 */
+        /* alternate是交替 */
+
+        @keyframes demo1 {
+            from {
+                background-color: #db9bdb;
+                left: 0px;
+            }
+
+            to {
+                background-color: #ff0000;
+                left: 300px;
+            }
+        }
+
+        @keyframes demo2 {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="base">hello world</div>
+    <div class="button">Butten</div>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .box {
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: aliceblue;
+
+        &.bb {
+            background-color: #db9bdb;
+            transition: all 0.4s;
+        &:hover {
+            transform: scale(2);
+        }
+        }
+        &.aa {
+            background: #9ad2e9;
+        }
+        
+        }
+        
+        /* transform 介紹 */
+        /* transform:scaleX是x軸縮放,scaleY是y軸縮放 */
+
+    </style>
+</head>
+<body>
+    <div class="box aa">11</div>
+    <div class="box bb">22</div>
+</body>
+</html>
