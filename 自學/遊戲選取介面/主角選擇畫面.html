@@ -6,73 +6,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Night City</title>
     <style>
-        body {
-            background-color: #ff0000;
+        body,
+        html {
+            margin: 0;
+            height: 100%;
+        }
+
+        .page {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0;
-            flex-wrap: wrap;
+            min-height: 100vh;
+            background-color: #ff0000;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
-        .place {
+        .cards-wrapper {
             display: flex;
-            justify-content: space-around;
-            align-items: center;
-            margin: 0;
-            height: 100vh;
-            width: 100vw;
             flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            max-width: 1200px;
         }
+
+        .card-container {
+            flex: 1 1 calc(33.333% - 32px);
+            max-width: 300px;
+            min-width: 180px;
+            aspect-ratio: 2 / 3;
+            perspective: 1000px;
+        }
+
 
         .card {
-            width: 30%;
-            height: 50%;
-            display: flex;
-            background-color: #ffffff;
-            border-radius: 5%;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s ease;
         }
-        
-        .name {
-            color: #ff0000;
-            display: flex;
 
+        .card:hover {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
             justify-content: center;
+            font-size: 1.5rem;
+            border-radius: 12px;
+            background: white;
         }
-        &.photo {
-            background-color: #ff0000;
+
+        .card-back {
+            transform: rotateY(180deg);
+            background: #333;
+            color: white;
         }
-        &.slogan {
-            background-color: #ff0000;
+
+        @media (max-width: 768px) {
+            .card-container {
+                flex: 1 1 calc(50% - 32px);
+                /* 手機或平板兩欄 */
+            }
         }
-        &.button {
-            background-color: #ff0000;
+
+        @media (max-width: 480px) {
+            .card-container {
+                flex: 1 1 100%;
+                /* 超小螢幕單欄 */
+            }
         }
-        
     </style>
 </head>
 
 <body>
-    <div class="bg">
-        <div class="place">
-            <div class="card">
-                <div class="name">V</div>
-                <div class="photo"></div>
-                <div class="slogan"></div>
-                <div class="button"></div>
+    <div class="page">
+        <div class="cards-wrapper">
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-front">正面</div>
+                    <div class="card-back">背面</div>
+                </div>
             </div>
-            <div class="card">
-                <div class="name"></div>
-                <div class="photo"></div>
-                <div class="slogan"></div>
-                <div class="button"></div>
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-front">正面</div>
+                    <div class="card-back">背面</div>
+                </div>
             </div>
-            <div class="card">
-                <div class="name"></div>
-                <div class="photo"></div>
-                <div class="slogan"></div>
-                <div class="button"></div>
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-front">正面</div>
+                    <div class="card-back">背面</div>
+                </div>
             </div>
+            <!-- 可以複製多個 card-container -->
         </div>
     </div>
 </body>
