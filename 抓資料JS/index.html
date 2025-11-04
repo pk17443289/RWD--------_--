@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>零食飲料下單工具</title>
+</head>
+
+<body>
+
+    <h1>零食 / 飲料下單</h1>
+
+    <input type="text" id="nameInput" placeholder="你的名字">
+    <input type="text" id="itemInput" placeholder="想要的飲料或零食">
+    <input type="number" id="priceInput" placeholder="金額">
+    <button id="addBtn">送出</button>
+    <button id="confirmBtn">確認訂單</button>
+    <button id="endConfirmBtn" disabled>結束確認</button>
+
+    <h2>訂單清單</h2>
+    <p id="orderCount">目前有 0 筆訂單</p>
+    <p id="orderTotalPrice">總金額：0 元</p>
+    <ul id="orderList"></ul>
+
+    <hr>
+
+    <h2>歷史紀錄</h2>
+    <div id="history"></div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
