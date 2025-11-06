@@ -28,95 +28,111 @@ function doPost(e) {
       data.cleaning?.quantity || 0,       // H: 整理環境區-數量(個)
       data.cleaning?.time || 0,           // I: 整理環境區-時間(分)
 
-      // === 進貨區 (J-Y) ===
-      data.receiving?.snake?.quantity || 0,      // J: 進貨-拆蛇皮-數量(個)
-      data.receiving?.snake?.time || 0,          // K: 進貨-拆蛇皮-時間(分)
-      data.receiving?.count?.quantity || 0,      // L: 進貨-數數-數量(個)
-      data.receiving?.count?.time || 0,          // M: 進貨-數數-時間(分)
-      data.receiving?.sign?.quantity || 0,       // N: 進貨-簽收-數量(個)
-      data.receiving?.sign?.time || 0,           // O: 進貨-簽收-時間(分)
-      data.receiving?.classify?.quantity || 0,   // P: 進貨-分類樣品與大貨-數量(個)
-      data.receiving?.classify?.time || 0,       // Q: 進貨-分類樣品與大貨-時間(分)
-      data.receiving?.abnormal?.quantity || 0,   // R: 進貨-異常-數量(個)
-      data.receiving?.abnormal?.time || 0,       // S: 進貨-異常-時間(分)
-      data.receiving?.shelve?.quantity || 0,     // T: 進貨-大貨上架-數量(個)
-      data.receiving?.shelve?.time || 0,         // U: 進貨-大貨上架-時間(分)
-      data.receiving?.organize?.quantity || 0,   // V: 進貨-整理環境-數量(個)
-      data.receiving?.organize?.time || 0,       // W: 進貨-整理環境-時間(分)
-      data.receiving?.clean?.quantity || 0,      // X: 進貨-打掃進貨區環境-數量(個)
-      data.receiving?.clean?.time || 0,          // Y: 進貨-打掃進貨區環境-時間(分)
+      // === 進貨區 (J-AA) ===
+      data.receiving?.items?.snake?.quantity || 0,      // J: 進貨-拆蛇皮-數量(個)
+      data.receiving?.items?.snake?.time || 0,          // K: 進貨-拆蛇皮-時間(分)
+      data.receiving?.items?.count?.quantity || 0,      // L: 進貨-數數-數量(個)
+      data.receiving?.items?.count?.time || 0,          // M: 進貨-數數-時間(分)
+      data.receiving?.items?.sign?.quantity || 0,       // N: 進貨-簽收-數量(個)
+      data.receiving?.items?.sign?.time || 0,           // O: 進貨-簽收-時間(分)
+      data.receiving?.items?.classify?.quantity || 0,   // P: 進貨-分類樣品與大貨-數量(個)
+      data.receiving?.items?.classify?.time || 0,       // Q: 進貨-分類樣品與大貨-時間(分)
+      data.receiving?.items?.abnormal?.quantity || 0,   // R: 進貨-異常-數量(個)
+      data.receiving?.items?.abnormal?.time || 0,       // S: 進貨-異常-時間(分)
+      data.receiving?.items?.shelve?.quantity || 0,     // T: 進貨-大貨上架-數量(個)
+      data.receiving?.items?.shelve?.time || 0,         // U: 進貨-大貨上架-時間(分)
+      data.receiving?.items?.organize?.quantity || 0,   // V: 進貨-整理環境-數量(個)
+      data.receiving?.items?.organize?.time || 0,       // W: 進貨-整理環境-時間(分)
+      data.receiving?.items?.clean?.quantity || 0,      // X: 進貨-打掃進貨區環境-數量(個)
+      data.receiving?.items?.clean?.time || 0,          // Y: 進貨-打掃進貨區環境-時間(分)
+      data.receiving?.subtotal || 0,                    // Z: 進貨區-總計時間(分)
+      data.receiving?.average || 0,                     // AA: 進貨區-平均時間(分)
 
-      // === 檢貨區 (Z-AH) ===
-      data.picking?.fetch?.quantity || 0,        // Z: 檢貨-去各個地方取貨-數量(個)
-      data.picking?.fetch?.time || 0,            // AA: 檢貨-去各個地方取貨-時間(分)
-      data.picking?.unbox_damaged?.quantity || 0, // AB: 檢貨-拆破損箱子-數量(個)
-      data.picking?.unbox_damaged?.time || 0,     // AC: 檢貨-拆破損箱子-時間(分)
-      data.picking?.stick_c?.quantity || 0,      // AD: 檢貨-把C料號黏在一起-數量(個)
-      data.picking?.stick_c?.time || 0,          // AE: 檢貨-把C料號黏在一起-時間(分)
-      data.picking?.separate?.quantity || 0,     // AF: 檢貨-分手包與包裝機包-數量(個)
-      data.picking?.separate?.time || 0,         // AG: 檢貨-分手包與包裝機包-時間(分)
-      data.picking?.machine?.quantity || 0,      // AH: 檢貨-過包裝機-數量(個)
-      data.picking?.machine?.time || 0,          // AI: 檢貨-過包裝機-時間(分)
+      // === 檢貨區 (AB-AM) ===
+      data.picking?.items?.fetch?.quantity || 0,        // AB: 檢貨-去各個地方取貨-數量(個)
+      data.picking?.items?.fetch?.time || 0,            // AC: 檢貨-去各個地方取貨-時間(分)
+      data.picking?.items?.unbox_damaged?.quantity || 0, // AD: 檢貨-拆破損箱子-數量(個)
+      data.picking?.items?.unbox_damaged?.time || 0,     // AE: 檢貨-拆破損箱子-時間(分)
+      data.picking?.items?.stick_c?.quantity || 0,      // AF: 檢貨-把C料號黏在一起-數量(個)
+      data.picking?.items?.stick_c?.time || 0,          // AG: 檢貨-把C料號黏在一起-時間(分)
+      data.picking?.items?.separate?.quantity || 0,     // AH: 檢貨-分手包與包裝機包-數量(個)
+      data.picking?.items?.separate?.time || 0,         // AI: 檢貨-分手包與包裝機包-時間(分)
+      data.picking?.items?.machine?.quantity || 0,      // AJ: 檢貨-過包裝機-數量(個)
+      data.picking?.items?.machine?.time || 0,          // AK: 檢貨-過包裝機-時間(分)
+      data.picking?.subtotal || 0,                      // AL: 檢貨區-總計時間(分)
+      data.picking?.average || 0,                       // AM: 檢貨區-平均時間(分)
 
-      // === 包貨區 (AJ-AQ) ===
-      data.packing?.hand_pack?.quantity || 0,    // AJ: 包貨-手包-數量(個)
-      data.packing?.hand_pack?.time || 0,        // AK: 包貨-手包-時間(分)
-      data.packing?.machine_sticker?.quantity || 0, // AL: 包貨-包裝機-數量(個)
-      data.packing?.machine_sticker?.time || 0,     // AM: 包貨-包裝機-時間(分)
-      data.packing?.box?.quantity || 0,          // AN: 包貨-拿箱子裝貨-數量(個)
-      data.packing?.box?.time || 0,              // AO: 包貨-拿箱子裝貨-時間(分)
-      data.packing?.clean_area?.quantity || 0,   // AP: 包貨-整理環境-數量(個)
-      data.packing?.clean_area?.time || 0,       // AQ: 包貨-整理環境-時間(分)
+      // === 包貨區 (AN-AV) ===
+      data.packing?.items?.hand_pack?.quantity || 0,    // AN: 包貨-手包-數量(個)
+      data.packing?.items?.hand_pack?.time || 0,        // AO: 包貨-手包-時間(分)
+      data.packing?.items?.machine_sticker?.quantity || 0, // AP: 包貨-包裝機-數量(個)
+      data.packing?.items?.machine_sticker?.time || 0,     // AQ: 包貨-包裝機-時間(分)
+      data.packing?.items?.box?.quantity || 0,          // AR: 包貨-拿箱子裝貨-數量(個)
+      data.packing?.items?.box?.time || 0,              // AS: 包貨-拿箱子裝貨-時間(分)
+      data.packing?.items?.clean_area?.quantity || 0,   // AT: 包貨-整理環境-數量(個)
+      data.packing?.items?.clean_area?.time || 0,       // AU: 包貨-整理環境-時間(分)
+      data.packing?.subtotal || 0,                      // AV: 包貨區-總計時間(分)
+      data.packing?.average || 0,                       // AW: 包貨區-平均時間(分)
 
-      // === 退貨區 (AR-BB) ===
-      data.returns?.return_3day?.quantity || 0,  // AR: 退貨-退貨3天內-數量(個)
-      data.returns?.return_3day?.time || 0,      // AS: 退貨-退貨3天內-時間(分)
-      data.returns?.return_clear?.quantity || 0, // AT: 退貨-退清-數量(個)
-      data.returns?.return_clear?.time || 0,     // AU: 退貨-退清-時間(分)
-      data.returns?.inspect?.quantity || 0,      // AV: 退貨-檢測-數量(個)
-      data.returns?.inspect?.time || 0,          // AW: 退貨-檢測-時間(分)
-      data.returns?.sign?.quantity || 0,         // AX: 退貨-簽收-數量(個)
-      data.returns?.sign?.time || 0,             // AY: 退貨-簽收-時間(分)
-      data.returns?.shelve?.quantity || 0,       // AZ: 退貨-上架-數量(個)
-      data.returns?.shelve?.time || 0,           // BA: 退貨-上架-時間(分)
-      data.returns?.abnormal?.quantity || 0,     // BB: 退貨-異常退貨-數量(個)
-      data.returns?.abnormal?.time || 0,         // BC: 退貨-異常退貨-時間(分)
+      // === 退貨區 (AX-BK) ===
+      data.returns?.items?.return_3day?.quantity || 0,  // AX: 退貨-退貨3天內-數量(個)
+      data.returns?.items?.return_3day?.time || 0,      // AY: 退貨-退貨3天內-時間(分)
+      data.returns?.items?.return_clear?.quantity || 0, // AZ: 退貨-退清-數量(個)
+      data.returns?.items?.return_clear?.time || 0,     // BA: 退貨-退清-時間(分)
+      data.returns?.items?.inspect?.quantity || 0,      // BB: 退貨-檢測-數量(個)
+      data.returns?.items?.inspect?.time || 0,          // BC: 退貨-檢測-時間(分)
+      data.returns?.items?.sign?.quantity || 0,         // BD: 退貨-簽收-數量(個)
+      data.returns?.items?.sign?.time || 0,             // BE: 退貨-簽收-時間(分)
+      data.returns?.items?.shelve?.quantity || 0,       // BF: 退貨-上架-數量(個)
+      data.returns?.items?.shelve?.time || 0,           // BG: 退貨-上架-時間(分)
+      data.returns?.items?.abnormal?.quantity || 0,     // BH: 退貨-異常退貨-數量(個)
+      data.returns?.items?.abnormal?.time || 0,         // BI: 退貨-異常退貨-時間(分)
+      data.returns?.subtotal || 0,                      // BJ: 退貨區-總計時間(分)
+      data.returns?.average || 0,                       // BK: 退貨區-平均時間(分)
 
-      // === MO+店區 (BD-BK) ===
-      data.mo_shop?.print?.quantity || 0,        // BD: MO店-印單-數量(個)
-      data.mo_shop?.print?.time || 0,            // BE: MO店-印單-時間(分)
-      data.mo_shop?.fetch_b?.quantity || 0,      // BF: MO店-去B棟拿商品-數量(個)
-      data.mo_shop?.fetch_b?.time || 0,          // BG: MO店-去B棟拿商品-時間(分)
-      data.mo_shop?.pick?.quantity || 0,         // BH: MO店-撿貨-數量(個)
-      data.mo_shop?.pick?.time || 0,             // BI: MO店-撿貨-時間(分)
-      data.mo_shop?.ship?.quantity || 0,         // BJ: MO店-出貨-數量(個)
-      data.mo_shop?.ship?.time || 0,             // BK: MO店-出貨-時間(分)
+      // === MO+店區 (BL-BW) ===
+      data.mo_shop?.items?.print?.quantity || 0,        // BL: MO店-印單-數量(個)
+      data.mo_shop?.items?.print?.time || 0,            // BM: MO店-印單-時間(分)
+      data.mo_shop?.items?.fetch_b?.quantity || 0,      // BN: MO店-去B棟拿商品-數量(個)
+      data.mo_shop?.items?.fetch_b?.time || 0,          // BO: MO店-去B棟拿商品-時間(分)
+      data.mo_shop?.items?.pick?.quantity || 0,         // BP: MO店-撿貨-數量(個)
+      data.mo_shop?.items?.pick?.time || 0,             // BQ: MO店-撿貨-時間(分)
+      data.mo_shop?.items?.ship?.quantity || 0,         // BR: MO店-出貨-數量(個)
+      data.mo_shop?.items?.ship?.time || 0,             // BS: MO店-出貨-時間(分)
+      data.mo_shop?.subtotal || 0,                      // BT: MO店區-總計時間(分)
+      data.mo_shop?.average || 0,                       // BU: MO店區-平均時間(分)
 
-      // === 酷澎區 (BL-BU) ===
-      data.kupon?.check?.quantity || 0,          // BL: 酷澎-檢貨-數量(個)
-      data.kupon?.check?.time || 0,              // BM: 酷澎-檢貨-時間(分)
-      data.kupon?.unbox?.quantity || 0,          // BN: 酷澎-拆盒-數量(個)
-      data.kupon?.unbox?.time || 0,              // BO: 酷澎-拆盒-時間(分)
-      data.kupon?.pack?.quantity || 0,           // BP: 酷澎-包貨-數量(個)
-      data.kupon?.pack?.time || 0,               // BQ: 酷澎-包貨-時間(分)
-      data.kupon?.arrange?.quantity || 0,        // BR: 酷澎-擺貨-數量(個)
-      data.kupon?.arrange?.time || 0,            // BS: 酷澎-擺貨-時間(分)
-      data.kupon?.inventory?.quantity || 0,      // BT: 酷澎-盤點-數量(個)
-      data.kupon?.inventory?.time || 0,          // BU: 酷澎-盤點-時間(分)
+      // === 酷澎區 (BV-CH) ===
+      data.kupon?.items?.check?.quantity || 0,          // BV: 酷澎-檢貨-數量(個)
+      data.kupon?.items?.check?.time || 0,              // BW: 酷澎-檢貨-時間(分)
+      data.kupon?.items?.unbox?.quantity || 0,          // BX: 酷澎-拆盒-數量(個)
+      data.kupon?.items?.unbox?.time || 0,              // BY: 酷澎-拆盒-時間(分)
+      data.kupon?.items?.pack?.quantity || 0,           // BZ: 酷澎-包貨-數量(個)
+      data.kupon?.items?.pack?.time || 0,               // CA: 酷澎-包貨-時間(分)
+      data.kupon?.items?.arrange?.quantity || 0,        // CB: 酷澎-擺貨-數量(個)
+      data.kupon?.items?.arrange?.time || 0,            // CC: 酷澎-擺貨-時間(分)
+      data.kupon?.items?.inventory?.quantity || 0,      // CD: 酷澎-盤點-數量(個)
+      data.kupon?.items?.inventory?.time || 0,          // CE: 酷澎-盤點-時間(分)
+      data.kupon?.subtotal || 0,                        // CF: 酷澎區-總計時間(分)
+      data.kupon?.average || 0,                         // CG: 酷澎區-平均時間(分)
 
-      // === 盤點區 (BV-BY) ===
-      data.inventory?.duty?.quantity || 0,       // BV: 盤點-值日生-數量(個)
-      data.inventory?.duty?.time || 0,           // BW: 盤點-值日生-時間(分)
-      data.inventory?.count_goods?.quantity || 0, // BX: 盤點-盤點商品-數量(個)
-      data.inventory?.count_goods?.time || 0,     // BY: 盤點-盤點商品-時間(分)
+      // === 盤點區 (CH-CM) ===
+      data.inventory?.items?.duty?.quantity || 0,       // CH: 盤點-值日生-數量(個)
+      data.inventory?.items?.duty?.time || 0,           // CI: 盤點-值日生-時間(分)
+      data.inventory?.items?.count_goods?.quantity || 0, // CJ: 盤點-盤點商品-數量(個)
+      data.inventory?.items?.count_goods?.time || 0,     // CK: 盤點-盤點商品-時間(分)
+      data.inventory?.subtotal || 0,                     // CL: 盤點區-總計時間(分)
+      data.inventory?.average || 0,                      // CM: 盤點區-平均時間(分)
 
-      // === 其他 (BZ) ===
-      formatCustomItems(data.others), // BZ: 其他（合併自訂項目）
+      // === 其他 (CN-CP) ===
+      formatCustomItems(data.others?.items), // CN: 其他（合併自訂項目）
+      data.others?.subtotal || 0,            // CO: 其他區-總計時間(分)
+      data.others?.average || 0,             // CP: 其他區-平均時間(分)
 
-      // === 統計 (CA-CC) ===
-      data.totalTime || 0,            // CA: 總時間(分)
-      data.remainingTime || 0,        // CB: 剩餘時間(分)
-      data.averageTime || 0           // CC: 平均時間(分/區)
+      // === 統計 (CQ-CS) ===
+      data.totalTime || 0,            // CQ: 總時間(分)
+      data.remainingTime || 0,        // CR: 剩餘時間(分)
+      data.averageTime || 0           // CS: 平均時間(分/區)
     ];
 
     // 將資料新增到試算表
@@ -170,7 +186,7 @@ function setupSheet() {
     '進包裝機-數量(個)', '進包裝機-時間(分)',
     '整理環境區-數量(個)', '整理環境區-時間(分)',
 
-    // 進貨區 (J-Y)
+    // 進貨區 (J-AA)
     '進貨-拆蛇皮-數量(個)', '進貨-拆蛇皮-時間(分)',
     '進貨-數數-數量(個)', '進貨-數數-時間(分)',
     '進貨-簽收-數量(個)', '進貨-簽收-時間(分)',
@@ -179,49 +195,56 @@ function setupSheet() {
     '進貨-大貨上架-數量(個)', '進貨-大貨上架-時間(分)',
     '進貨-整理環境-數量(個)', '進貨-整理環境-時間(分)',
     '進貨-打掃進貨區環境-數量(個)', '進貨-打掃進貨區環境-時間(分)',
+    '進貨區-總計時間(分)', '進貨區-平均時間(分)',
 
-    // 檢貨區 (Z-AH)
+    // 檢貨區 (AB-AM)
     '檢貨-去各個地方取貨-數量(個)', '檢貨-去各個地方取貨-時間(分)',
     '檢貨-拆破損箱子-數量(個)', '檢貨-拆破損箱子-時間(分)',
     '檢貨-把C料號黏在一起-數量(個)', '檢貨-把C料號黏在一起-時間(分)',
     '檢貨-分手包與包裝機包-數量(個)', '檢貨-分手包與包裝機包-時間(分)',
     '檢貨-過包裝機-數量(個)', '檢貨-過包裝機-時間(分)',
+    '檢貨區-總計時間(分)', '檢貨區-平均時間(分)',
 
-    // 包貨區 (AJ-AQ)
+    // 包貨區 (AN-AW)
     '包貨-手包-數量(個)', '包貨-手包-時間(分)',
     '包貨-包裝機-數量(個)', '包貨-包裝機-時間(分)',
     '包貨-拿箱子裝貨-數量(個)', '包貨-拿箱子裝貨-時間(分)',
     '包貨-整理環境-數量(個)', '包貨-整理環境-時間(分)',
+    '包貨區-總計時間(分)', '包貨區-平均時間(分)',
 
-    // 退貨區 (AR-BC)
+    // 退貨區 (AX-BK)
     '退貨-退貨3天內-數量(個)', '退貨-退貨3天內-時間(分)',
     '退貨-退清-數量(個)', '退貨-退清-時間(分)',
     '退貨-檢測-數量(個)', '退貨-檢測-時間(分)',
     '退貨-簽收-數量(個)', '退貨-簽收-時間(分)',
     '退貨-上架-數量(個)', '退貨-上架-時間(分)',
     '退貨-異常退貨-數量(個)', '退貨-異常退貨-時間(分)',
+    '退貨區-總計時間(分)', '退貨區-平均時間(分)',
 
-    // MO+店區 (BD-BK)
+    // MO+店區 (BL-BU)
     'MO店-印單-數量(個)', 'MO店-印單-時間(分)',
     'MO店-去B棟拿商品-數量(個)', 'MO店-去B棟拿商品-時間(分)',
     'MO店-撿貨-數量(個)', 'MO店-撿貨-時間(分)',
     'MO店-出貨-數量(個)', 'MO店-出貨-時間(分)',
+    'MO店區-總計時間(分)', 'MO店區-平均時間(分)',
 
-    // 酷澎區 (BL-BU)
+    // 酷澎區 (BV-CG)
     '酷澎-檢貨-數量(個)', '酷澎-檢貨-時間(分)',
     '酷澎-拆盒-數量(個)', '酷澎-拆盒-時間(分)',
     '酷澎-包貨-數量(個)', '酷澎-包貨-時間(分)',
     '酷澎-擺貨-數量(個)', '酷澎-擺貨-時間(分)',
     '酷澎-盤點-數量(個)', '酷澎-盤點-時間(分)',
+    '酷澎區-總計時間(分)', '酷澎區-平均時間(分)',
 
-    // 盤點區 (BV-BY)
+    // 盤點區 (CH-CM)
     '盤點-值日生-數量(個)', '盤點-值日生-時間(分)',
     '盤點-盤點商品-數量(個)', '盤點-盤點商品-時間(分)',
+    '盤點區-總計時間(分)', '盤點區-平均時間(分)',
 
-    // 其他 (BZ)
-    '其他',
+    // 其他 (CN-CP)
+    '其他', '其他區-總計時間(分)', '其他區-平均時間(分)',
 
-    // 統計 (CA-CC)
+    // 統計 (CQ-CS)
     '總時間(分)', '剩餘時間(分)', '平均時間(分/區)'
   ];
 

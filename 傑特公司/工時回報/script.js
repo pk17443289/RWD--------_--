@@ -9,6 +9,9 @@ let customItemCounter = 0;
 // DOM 元素
 let form, totalTimeEl, remainingTimeEl, averageTimeEl, statusMessageEl, submitBtn;
 
+// 備份版本號（修改資料結構時需要更新這個版本號）
+const BACKUP_VERSION = '2.5';
+
 // 初始化
 document.addEventListener('DOMContentLoaded', function() {
     // 獲取 DOM 元素
@@ -18,6 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
     averageTimeEl = document.getElementById('averageTime');
     statusMessageEl = document.getElementById('statusMessage');
     submitBtn = document.getElementById('submitBtn');
+
+    // 清除舊版本的備份
+    clearOldBackup();
 
     // 設定今天日期為預設值，且只能選擇今天
     const dateInput = document.getElementById('reportDate');
@@ -39,6 +45,35 @@ document.addEventListener('DOMContentLoaded', function() {
     // 載入備份（延遲執行）
     setTimeout(loadBackup, 500);
 });
+
+// ===== 清除舊版本的備份 =====
+function clearOldBackup() {
+    try {
+        const backup = localStorage.getItem('warehouseTimeReport_backup');
+        if (!backup) return;
+
+        const data = JSON.parse(backup);
+
+        // 檢查版本號，如果沒有版本號或版本不符，清除備份
+        if (!data.version || data.version !== BACKUP_VERSION) {
+            console.log('發現舊版本備份，自動清除...');
+            localStorage.removeItem('warehouseTimeReport_backup');
+            return;
+        }
+
+        // 檢查備份日期，如果不是今天的備份，清除
+        const today = new Date().toISOString().split('T')[0];
+        if (data.backupDate && data.backupDate !== today) {
+            console.log('發現過期備份，自動清除...');
+            localStorage.removeItem('warehouseTimeReport_backup');
+            return;
+        }
+    } catch (e) {
+        // 如果備份格式錯誤，直接清除
+        console.log('備份格式錯誤，自動清除...');
+        localStorage.removeItem('warehouseTimeReport_backup');
+    }
+}
 
 // ===== 卡片展開/收合 =====
 function toggleCard(element, event) {
@@ -350,16 +385,30 @@ function collectFormData() {
                 .map(input => input.dataset.subitem)
         )];
 
+        // 初始化區域資料，包含細項和統計
+        data[area] = {
+            items: {},
+            subtotal: 0,
+            average: 0
+        };
+
         // 對每個子項目收集數量和時間
         subitems.forEach(subitem => {
             const quantityInput = document.querySelector(`[data-area="${area}"][data-subitem="${subitem}"][data-field="quantity"]`);
             const timeInput = document.querySelector(`[data-area="${area}"][data-subitem="${subitem}"][data-field="time"]`);
 
-            data[area][subitem] = {
+            data[area].items[subitem] = {
                 quantity: quantityInput ? (parseInt(quantityInput.value) || 0) : 0,
                 time: timeInput ? (parseInt(timeInput.value) || 0) : 0
             };
         });
+
+        // 收集該區域的總計和平均值
+        const subtotalEl = document.querySelector(`[data-subtotal="${area}"]`);
+        const averageEl = document.querySelector(`[data-average="${area}"]`);
+
+        data[area].subtotal = subtotalEl ? (parseInt(subtotalEl.textContent) || 0) : 0;
+        data[area].average = averageEl ? (parseInt(averageEl.textContent) || 0) : 0;
     });
 
     // 收集其他區域的自訂項目
@@ -375,7 +424,16 @@ function collectFormData() {
             othersArray.push({ name, value });
         }
     });
-    data.others = othersArray;
+
+    // 收集其他區域的統計
+    const othersSubtotalEl = document.querySelector('[data-subtotal="others"]');
+    const othersAverageEl = document.querySelector('[data-average="others"]');
+
+    data.others = {
+        items: othersArray,
+        subtotal: othersSubtotalEl ? (parseInt(othersSubtotalEl.textContent) || 0) : 0,
+        average: othersAverageEl ? (parseInt(othersAverageEl.textContent) || 0) : 0
+    };
 
     // 統計資料
     data.totalTime = parseInt(totalTimeEl.textContent);
@@ -413,6 +471,10 @@ async function handleSubmit(e) {
 
     // 收集資料
     const formData = collectFormData();
+
+    // 除錯：顯示收集到的資料
+    console.log('=== 即將提交的資料 ===');
+    console.log(JSON.stringify(formData, null, 2));
 
     // 顯示載入狀態
     submitBtn.disabled = true;
@@ -525,6 +587,8 @@ function resetForm() {
 // ===== 自動儲存功能（LocalStorage 備份） =====
 function autoSave() {
     const data = {
+        version: BACKUP_VERSION,  // 備份版本號
+        backupDate: new Date().toISOString().split('T')[0],  // 備份日期
         employeeName: document.getElementById('employeeName').value,
         // 簡單區域 - 儲存數量和時間
         morning: {
@@ -588,7 +652,60 @@ function loadBackup() {
     try {
         const data = JSON.parse(backup);
 
-        // 詢問是否載入備份
+        // 檢查備份是否有實際內容
+        let hasContent = false;
+
+        // 檢查員工姓名
+        if (data.employeeName && data.employeeName.trim()) {
+            hasContent = true;
+        }
+
+        // 檢查簡單區域是否有時間填寫
+        if (!hasContent) {
+            const simpleAreas = ['morning', 'packaging_machine', 'cleaning'];
+            for (const area of simpleAreas) {
+                if (data[area]) {
+                    const timeValue = typeof data[area] === 'object' ? data[area].time : data[area];
+                    if (timeValue && parseInt(timeValue) > 0) {
+                        hasContent = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        // 檢查詳細區域是否有時間填寫
+        if (!hasContent && data.details) {
+            for (const area in data.details) {
+                for (const subitem in data.details[area]) {
+                    const subitemData = data.details[area][subitem];
+                    const timeValue = typeof subitemData === 'object' ? subitemData.time : subitemData;
+                    if (timeValue && parseInt(timeValue) > 0) {
+                        hasContent = true;
+                        break;
+                    }
+                }
+                if (hasContent) break;
+            }
+        }
+
+        // 檢查自訂項目
+        if (!hasContent && data.customItems && data.customItems.length > 0) {
+            for (const item of data.customItems) {
+                if (item.value && parseInt(item.value) > 0) {
+                    hasContent = true;
+                    break;
+                }
+            }
+        }
+
+        // 如果沒有實際內容，自動清除備份
+        if (!hasContent) {
+            localStorage.removeItem('warehouseTimeReport_backup');
+            return;
+        }
+
+        // 有內容才詢問是否載入備份
         if (!confirm('發現未完成的回報資料，是否載入？')) {
             localStorage.removeItem('warehouseTimeReport_backup');
             return;
