@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倉庫工時回報系統</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #FFD700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(26, 26, 26, 0.9);
+            padding: 60px 40px;
+            border-radius: 20px;
+            border: 3px solid #FFD700;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.5);
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px #FFD700;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 20px #FFD700, 0 0 40px #FFD700;
+            }
+            50% {
+                text-shadow: 0 0 30px #FFD700, 0 0 60px #FFD700;
+            }
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #FFF;
+        }
+
+        .redirect-info {
+            font-size: 1rem;
+            color: #00FFFF;
+            margin-top: 30px;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 215, 0, 0.3);
+            border-top-color: #FFD700;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-top: 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .manual-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .manual-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 倉庫工時回報系統</h1>
+        <p>正在跳轉到工時回報系統...</p>
+        <div class="loading"></div>
+        <p class="redirect-info">如果沒有自動跳轉，請點選下方按鈕</p>
+        <a href="./傑特公司/工時回報/index.html" class="manual-link">進入工時回報系統</a>
+    </div>
+
+    <script>
+        // 3 秒後自動跳轉
+        setTimeout(function() {
+            window.location.href = './傑特公司/工時回報/index.html';
+        }, 3000);
+    </script>
+</body>
+</html>
