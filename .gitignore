@@ -1,0 +1,27 @@
+# IDE 設定檔
+.idea/
+.vscode/
+
+# 系統檔案
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 暫存檔案
+*.tmp
+*.bak
+*.swp
+*~
+
+# 日誌檔案
+*.log
+
+# Node modules (如果未來有使用)
+node_modules/
+
+# 環境變數檔案
+.env
+.env.local
+
+# Windows 特殊檔案
+nul
